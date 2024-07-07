@@ -1,0 +1,58 @@
+.city-img img {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    /* width: auto;
+    height: 500px; */
+}
+
+.nav-pills .nav-item .nav-link{
+    border-radius: 20px;
+    background-color: #fffffff6;
+    margin: 3px;
+    border: 2px solid #edeaef;
+    color: rgb(67, 66, 66);
+}
+
+.nav-pills .nav-item .nav-link.active {
+    background-color: #21b1f468;
+    color: rgb(22, 22, 22);
+    border: 2px solid #25a2ccd3;
+    font-weight:bold;
+}
+
+.nav-pills {
+    border-bottom: 0px solid transparent;
+  }
+.card, .card-header, .card-header-tabs{
+    border: 0px solid transparent;
+    background-color:transparent;
+}
+
+/* new card  */
+/* .cards-wrapper {
+    display: flex;
+    /* justify-content: center; */
+  } */
+  .card img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    background-color: #e1e1e1;
+    width: 5vh;
+    height: 5vh;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* @media (min-width: 768px) {
+    .card iframe {
+      height: 11em;
+    }
+ } */
+
+ .popover{
+    max-width:400px;
+}
