@@ -1,0 +1,113 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1" />
+    <title>InsTrip</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'css/city.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        .city {
+            margin-bottom: 30px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .city h2 {
+            color: #2c3e50;
+            font-size: 28px;
+        }
+        .city h3 {
+            color: #34495e;
+            font-size: 20px;
+            padding-left: 15px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- navigation -->
+    <nav id="navMin" class="navbar navbar-dark shadow navbar-expand-md sticky-top ps-2 " style="background-color: #343c42;">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand text-info fas fa-paw"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="/docs" class="nav-link">API doc</a></li>
+                    <li class="nav-item"><a href="/admin" class="nav-link">Admin</a></li>
+                </ul>
+            </div>
+            <div class="navbar-text mx-lg-3">
+                <a href="#" class="navbar-brand fa-brands fa-github" style="font-size:32px"></a>
+            </div>
+        </div>
+    </nav>
+
+<section>
+    <div class="container mt-4">            
+        <div class="row">
+            <h2 class="mb-3"><i class="fa-solid fa-wand-magic-sparkles"></i> {{ country_name_ch }}旅遊城市特色分析及推薦景點</h2>
+            <div class="col-6 col-sm-12 my-3 " style="position:relative; height: 400px; ">
+                <canvas id="pieChart_japan" ></canvas>
+            </div>
+        </div>
+    </div>
+    <!-- <p class="small my-1 mx-5" style="font-size: 10px;color:#566573;"><i class="col-1 text-end fs-6 fa-solid fa-wand-magic-sparkles" style="color:#566573;"></i> Power by ChatGPT</p> -->
+   {{ analysis | safe }}
+   <p class="text-center small my-5" style="font-size: 10px;color:#566573;"><i class="col-1 text-end fs-6 fa-solid fa-wand-magic-sparkles" style="color:#566573;"></i> Power by ChatGPT</p>
+</section>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    const japan = document.getElementById('pieChart_japan');
+
+
+    new Chart(japan, {
+      type: 'pie',
+      data: {
+        labels: {{ labels | safe  }},
+        datasets: [{
+          label: '# of Posts',
+          data: {{ data }},
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)',
+            'rgb(126, 181, 142)',
+            'rgb(143, 131, 203)',
+
+          ]
+        }],
+        hoverOffset: 4
+      },
+      options: {
+        plugins: {
+            title: {
+                display: true,
+                text: '2024年{{ country_name_ch }}城市遊客打卡數量分佈圖',
+                font: {
+                        size: 20
+                    }
+            }
+        }
+    }
+    });
+
+  
+  </script>
+
+</body>

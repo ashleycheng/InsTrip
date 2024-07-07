@@ -1,0 +1,84 @@
+#cover1 {
+    /* background: url("/static/img/japan.jpg") center center no-repeat; */
+    background-size: cover; 
+    height: 60%;
+    /* text-align: center; */
+    align-items: center;
+    position: relative;
+    background-position: center center !important;
+
+}
+#cover1::before {
+    background-color: rgba(255, 255, 255, 0.25);
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+#cover1 .container{
+    height: 60vh;
+    z-index: 1;
+    position: relative;
+}
+#cover1 .article {
+    overflow:hidden;
+}
+.city-row {
+    position: relative;
+}
+.great-for li{
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 16px;
+}
+/* bootstrap css */
+body{
+    baackground:#f5f5f5;
+    margin-top:20px;}
+
+/* .event-block {
+    box-shadow: 0px 0px 16px 0px rgba(187, 187, 187, 0.48)
+}
+
+.event-block ul li i {
+    color: #59c17a
+} */
+
+
+.position-relative {
+    position: relative !important;
+}
+
+.margin-40px-bottom {
+    margin-bottom: 40px;
+}
+.padding-60px-lr {
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.margin-15px-bottom {
+    margin-bottom: 15px;
+}
+.font-weight-500 {
+    font-weight: 500;
+}
+.font-size22 {
+    font-size: 22px;
+}
+.text-theme-color {
+    color: #192f59;
+}
+.margin-10px-bottom {
+    margin-bottom: 10px;
+}
+.margin-10px-right {
+    margin-right: 10px;
+}
+
+#city img {
+    height: 280px;
+    width: 450px;
+}
