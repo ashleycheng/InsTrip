@@ -1,5 +1,5 @@
 # InsTrip
-This project built a travel website called [InsTrip](https://ashleycheng.pythonanywhere.com/) , which makes users to explore the most popular cities and photo spots on Instagram. It also provides AI-generated(ChatGPT) attraction recommendations for the cities with the most tourists.  
+This project built a travel website called [InsTrip](https://ashleycheng.pythonanywhere.com/) , which makes users to explore the most popular cities and photo spots on Instagram. It also uses the AI-generated tool (ChatGPT) to provide content based on data analysis charts for the cities with the most tourists.
 
 
 ## System architecture
