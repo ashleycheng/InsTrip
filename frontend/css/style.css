@@ -1,21 +1,12 @@
-/* #navMin{
-    margin: 20px;
-    border-radius: 16px;
-} */
-
 #cover {
-    background: url("/static/img/header.jpg") center center no-repeat;
+    background: url("/frontend/img/header.jpg") center center no-repeat;
     background-size: cover; 
     height: 80%;
     text-align: center;
     align-items: center;
     position: relative;
-    /* text-align: center; */
-    /* height: 80%;
-    display: flex;
-    align-items: center;
-    position: relative; */
 }
+
 #cover::before {
     background-color: rgba(255, 255, 255, 0.5);
     content: "";
@@ -40,19 +31,6 @@
     font-size: 2em;
     color: #15aabf;
 }
-/* .carousel-item image {
-    width: 50;
-    height: auto;
-}
-.carousel-caption {
-    width: 100%;
-    background: #15abbf5a;
-    left: inherit;
-    right: inherit;
-}
-.carousel-indicators {
-    padding-bottom: 1rem;
-} */
 
 #program {
     position:relative;

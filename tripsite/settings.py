@@ -31,7 +31,7 @@ SECRET_KEY = "django-insecure-g7!80awp(^a+zdar+pd!61ur$^41c50+^1cy$#)xsu(@id*@(2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -116,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Taipei"
 
 USE_I18N = True
 
@@ -136,6 +136,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "frontend"),
 )
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
