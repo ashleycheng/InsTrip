@@ -1,84 +1,37 @@
 # InsTrip
-This project built a travel website called [InsTrip](https://ashleycheng.pythonanywhere.com/) , which makes users to explore the most popular cities and photo spots on Instagram. It also uses the AI-generated tool (ChatGPT) to provide content based on data analysis charts for the cities with the most tourists.
+This project built a travel website called [InsTrip](https://ashleycheng.pythonanywhere.com/) , which makes users to explore the most popular travel cities and photo spots on Instagram. To analyze Instagram data, this project created web scrapers to extract Instagram posts with travel-related hashtags and check-in data. It also used ChatGPT to provide travel destination introductions based on data analysis charts.
 
 
-## System architecture
-<img width="1074" alt="image" src="https://github.com/ashleycheng/InsTrip/assets/17893844/977c8c33-87cf-4957-8de5-6aac161be3ba">
+## Tech stack
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/6092af82-5e88-4ffd-89cc-eb453ff468ad">
+
 
 
 ## Data model
 <img width="1020" alt="image" src="https://github.com/ashleycheng/InsTrip/assets/17893844/162742e4-685c-4263-8c8d-e877b772df63">
 
 ## Get started
-### 1. Build MySQL database using Docker
-Create the Dockerfile `mysql.yml`:
+### 1. Set up environment
+Create `.env` file to set environment variables needed in this project.
 ```
-version: '3.3'
-services:
+DB_USER=YOUR_DB_USER_NAME 
+DB_PASSWORD=YOUR_DB_PASSWORD 
+DB_HOST=YOUR_DB_HOST
+DB_PORT=YOUR_DB_PORT 
+DB_NAME=YOUR_DB_NAME 
+API_TOKEN=YOUR_API_TOKEN 
+IG_ACCOUNT=YOUR_IG_ACCOUNT 
+IG_PASSWORD=YOUR_IG_PASSWORD
+```
+### 2. Launch the web app using Docker
 
-  mysql:
-      image: mysql:8.0
-      command: mysqld --default-authentication-plugin=mysql_native_password
-      ports:
-          - 3307:3306
-      environment:
-          MYSQL_DATABASE: YOUR_DB_NAME
-          MYSQL_USER: YOUR_DB_USER_NAME
-          MYSQL_PASSWORD: YOUR_DB_PASSWORD
-          MYSQL_ROOT_PASSWORD: YOUR_DB_PASSWORD
-      volumes:
-          - mysql:/var/lib/mysql
-      networks:
-          - dev
-
-  phpmyadmin:
-      image: phpmyadmin/phpmyadmin:5.1.0
-      links:
-          - mysql:db
-      ports:
-          - 8000:80
-      depends_on:
-        - mysql
-      networks:
-          - dev
-
-networks:
-  dev:
-
-volumes:
-  mysql:
-    external: true
+Run `docker-compose.yml` to create the docker container for the Django web application.
+```
+docker-compose -f docker-compose.yml build
+docker-compose -f docker-compose.yml up
 ```
 
-Run `mysql.yml` to create the docker container for DB and phpmyadmin tool in the background:
-```
-docker-compose -f mysql.yml up -d
-```
-
-### 2. Set up environment
-Build the virtual environment and install python and node packages:
-```
-$ virtualenv -p python3 venv
-$ source venv/bin/activate
-$ pip install -r requirements.txt
-
-$ npm install
-```
-
-
-Set environment variables needed in this project:
-```
-$ export DB_USER=YOUR_DB_USER_NAME \
-  export DB_PASSWORD=YOUR_DB_PASSWORD \
-  export DB_HOST=YOUR_DB_HOST \
-  export DB_PORT=YOUR_DB_PORT \
-  export DB_NAME=YOUR_DB_NAME \
-  export API_TOKEN=YOUR_API_TOKEN \
-  export IG_ACCOUNT=YOUR_IG_ACCOUNT \
-  export IG_PASSWORD=YOUR_IG_PASSWORD
-```
-
-## Run the web scraper to get public data on Instagram
+## Run the web scrapers to get public data on Instagram
 Here are two web scrapers that can be executed through any scheduling tool.
 - [ig_post_scraper.py](https://github.com/ashleycheng/InsTrip/blob/main/web_scraper/ig_post_scraper.py): extract posts with travel hastag, like: `#日本旅遊` or `#韓國旅遊`.
 - [ig_location_scraper.py](https://github.com/ashleycheng/InsTrip/blob/main/web_scraper/ig_location_scraper.py): extract location information of the posts with check-in.
